@@ -3,7 +3,7 @@ Description=hello-karyon-rxnetty
 
 [Service]
 Type=forking
-ExecStart=exec java -jar /opt/hello-karyon-rxnetty/hello-karyon-rxnetty*.jar 2>&1 > /var/log/hello-karyon-rxnetty/hello.log &
+ExecStart=/bin/bash -c 'exec java -jar /opt/hello-karyon-rxnetty/hello-karyon-rxnetty*.jar 2>&1 > /var/log/hello-karyon-rxnetty/hello.log&' &
 
 [Install]
 WantedBy=multi-user.target
