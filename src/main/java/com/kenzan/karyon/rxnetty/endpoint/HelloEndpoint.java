@@ -31,7 +31,6 @@ public class HelloEndpoint {
     }
 
     public Observable<String> getHelloName(HttpServerRequest<ByteBuf> request) {
-
         UriPattern pattern = new UriPattern(Pattern.compile("/hello/(.*)"));
         String name = pattern.match(request.getUri()).group(1);
 
