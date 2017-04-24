@@ -31,11 +31,14 @@ public class IndexResource implements RequestHandler<ByteBuf, ByteBuf>{
     private final SimpleUriRouter<ByteBuf, ByteBuf> delegate;
     private final HelloEndpoint endpoint;
 
+    private static final Logger logger = LoggerFactory.getLogger(IndexResource.class);
+
     public static String execCmd(String cmd) throws java.io.IOException {
         java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(cmd).getInputStream()).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
     public IndexResource() {
+        logger.info("Start index resource");
         endpoint = new HelloEndpoint();
         delegate = new SimpleUriRouter<>();
 
@@ -60,11 +63,13 @@ public class IndexResource implements RequestHandler<ByteBuf, ByteBuf>{
                             e.printStackTrace();
                         }
                         response.writeString("<html><head><style>body{text-align:center;font-family:'Lucida Grande'}</style></head><body><img src='http://kenzan.com/wp-content/themes/kenzan/images/logo-reg.png' /><h2>Example Spinnaker Application</h2><h3>Instance Id " + instanceId + "</h3><h3>$USERDATA ENV VAR: " + userdata + "</h3></body></html>");
+                        logger.info("Write response");
                         return response.close();
                     }
                 });
             }
         });
+        logger.info("End index resource");
     }
     @Override
     public Observable<Void> handle(HttpServerRequest<ByteBuf> request,
