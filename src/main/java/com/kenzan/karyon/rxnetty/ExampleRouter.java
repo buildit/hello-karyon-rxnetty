@@ -45,7 +45,6 @@ public class ExampleRouter implements RequestHandler<ByteBuf, ByteBuf>{
     @Override
     public Observable<Void> handle(HttpServerRequest<ByteBuf> request,
             HttpServerResponse<ByteBuf> response) {
-
         return delegate.handle(request, response);
     }
 
