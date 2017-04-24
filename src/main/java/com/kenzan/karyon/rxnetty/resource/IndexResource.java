@@ -22,6 +22,9 @@ import io.reactivex.netty.protocol.http.server.RequestHandler;
 import netflix.karyon.transport.http.SimpleUriRouter;
 import rx.Observable;
 import rx.functions.Func1;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import com.kenzan.karyon.rxnetty.endpoint.HelloEndpoint;
 import java.io.*;
